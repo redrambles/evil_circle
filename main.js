@@ -5,6 +5,11 @@ var ctx = canvas.getContext('2d');
 var width = canvas.width = window.innerWidth;
 var height = canvas.height = window.innerHeight;
 
+// Counter
+var counter = document.querySelector('p');
+var numBalls = 0;
+counter.innerText = "Ball Count: " + numBalls;
+
 // function to generate random number
 function random(min,max) {
   var num = Math.floor(Math.random()*(max-min)) + min;
@@ -150,10 +155,14 @@ EvilCircle.prototype.collisionDetect = function() {
 
       if (distance < this.size + balls[j].size) {
         balls[j].exists = false;
+        numBalls -= 1;
+        counter.innerText = "Ball Count: " + numBalls;
       }
     }
   }
 };
+
+
 
 // Create the Evil circle
 var evilCircle = new EvilCircle(
@@ -168,7 +177,6 @@ var evilCircle = new EvilCircle(
 
 // Let us control it with A, S, D, F
 evilCircle.setControls();
-
 
 // Let's create an array for all our balls
 var balls = [];
@@ -190,6 +198,8 @@ function letThereBeBalls() {
     );
     // Add 25 balls of random widths/heights/speed/colors to the array
     balls.push(ball);
+    numBalls += 1;
+    counter.innerText = "Ball Count: " + numBalls;
   }
 
   // Now that we have our array of balls, let's draw them and update them, and change their colors when they collide
