@@ -1,4 +1,4 @@
-// setup canvas - canvas up the WHOLE browser window, yo.
+// So! Let's setup canvas - canvas up the WHOLE browser window, yo.
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
 
